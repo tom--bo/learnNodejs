@@ -1,0 +1,14 @@
+var fs = require('fs');
+
+module.exports = function (dirName, fileType, callback) {
+    fs.readdir(dirName, function (err, list) {
+        if(err) {
+            return callback(err);
+        }
+        ans = list.filter(function (ele){
+            return (ele.indexOf("." + fileType) != -1);
+        });
+
+        callback(null, ans);
+    });
+}
